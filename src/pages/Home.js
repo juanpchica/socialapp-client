@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 
 export const Home = () => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={16}>
       <Grid item xs={12} sm={8}>
         Scream list
       </Grid>
