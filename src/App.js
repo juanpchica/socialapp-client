@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
@@ -26,9 +27,11 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <Router>
         <Navbar />
-        <Route exact component={Home} path='/' />
-        <Route component={Login} path='/login' />
-        <Route component={Signup} path='/signup' />
+        <Container>
+          <Route exact component={Home} path='/' />
+          <Route component={Login} path='/login' />
+          <Route component={Signup} path='/signup' />
+        </Container>
       </Router>
     </MuiThemeProvider>
   );
