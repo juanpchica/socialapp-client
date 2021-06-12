@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
+import { Scream } from "../components/Scream";
+
 export const Home = () => {
   const [screams, setScreams] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +24,7 @@ export const Home = () => {
 
   if (screams && !isLoading) {
     recentScreamsMarkup = screams.map((scream, index) => {
-      return <p key={index}>{scream.body}</p>;
+      return <Scream scream={scream}></Scream>;
     });
   } else {
     recentScreamsMarkup = <p>Loading....</p>;
