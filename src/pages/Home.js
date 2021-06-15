@@ -24,7 +24,7 @@ export const Home = () => {
 
   if (screams && !isLoading) {
     recentScreamsMarkup = screams.map((scream, index) => {
-      return <Scream scream={scream}></Scream>;
+      return <Scream key={index} scream={scream}></Scream>;
     });
   } else {
     recentScreamsMarkup = <p>Loading....</p>;
