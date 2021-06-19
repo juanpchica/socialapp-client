@@ -10,7 +10,7 @@ export const Home = () => {
 
   const getScreams = async () => {
     const { data } = await axios.get(`/screams`);
-
+    console.log(data);
     //Set screams and show them
     setScreams(data);
     setIsLoading(false);
