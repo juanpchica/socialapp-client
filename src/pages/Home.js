@@ -28,7 +28,7 @@ export const Home = () => {
       return <Scream key={index} scream={scream}></Scream>;
     });
   } else {
-    recentScreamsMarkup = <p>Loading....</p>;
+    recentScreamsMarkup = <p>Loading more scream....</p>;
   }
 
   return (
