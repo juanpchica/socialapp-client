@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
-import { Scream } from "../components/Scream";
+import Scream from "../components/Scream";
 
 export const Home = () => {
   const [screams, setScreams] = useState();
