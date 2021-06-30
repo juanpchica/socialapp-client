@@ -3,14 +3,24 @@ import React from "react";
 /* Material UI*/
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
+import { Link } from "react-router-dom";
+
 const styles = {
   card: {
     display: "flex",
+    marginBottom: 15,
+    marginTop: 15,
+  },
+  image: {
+    minWidth: 200,
+    objectFit: "cover",
+  },
+  content: {
+    padding: 25,
   },
 };
 
@@ -29,17 +39,26 @@ const Scream = (props) => {
   } = props;
 
   return (
-    <Card>
-      <CardActionArea>
-        <CardMedia image={userImage} title='Profile Image' />
-        <CardContent>
-          <Typography variant='h5'>{userHandle}</Typography>
-          <Typography variant='body2' color='textSecondary'>
-            {createdAt}
-          </Typography>
-          <Typography variant='body1'>{body}</Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card className={classes.card}>
+      <CardMedia
+        image={userImage}
+        title='Profile Image'
+        className={classes.image}
+      />
+      <CardContent className={classes.content}>
+        <Typography
+          variant='h5'
+          component={Link}
+          to={`/users/${userHandle}`}
+          color='primary'
+        >
+          {userHandle}
+        </Typography>
+        <Typography variant='body2' color='textSecondary'>
+          {createdAt}
+        </Typography>
+        <Typography variant='body1'>{body}</Typography>
+      </CardContent>
     </Card>
   );
 };
