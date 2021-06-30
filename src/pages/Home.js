@@ -17,7 +17,6 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    console.log(isLoading);
     getScreams();
   }, []);
 
