@@ -58,6 +58,7 @@ const Scream = (props) => {
           {createdAt}
         </Typography>
         <Typography variant='body1'>{body}</Typography>
+        <Typography variant="body1">{screamId}</Typography>
       </CardContent>
     </Card>
   );
