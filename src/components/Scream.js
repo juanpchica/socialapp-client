@@ -17,6 +17,7 @@ const styles = {
   },
   image: {
     minWidth: 200,
+    height:500,
     width:500,
     objectFit: "cover",
   },
