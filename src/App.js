@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import themeFile from "./util/theme";
+import jwtDecode from "jwt-decode";
 
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
@@ -11,6 +12,11 @@ import Signup from "./pages/Signup";
 import { Navbar } from "./components/Navbar";
 
 const theme = createMuiTheme(themeFile);
+
+//Validate if token exist and token is correct for user logged in
+const token = localStorage.FBIdToken;
+if (token) {
+}
 
 function App() {
   return (
