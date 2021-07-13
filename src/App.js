@@ -10,6 +10,7 @@ import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { Navbar } from "./components/Navbar";
+import AuthRoute from "./util/AuthRoute";
 
 const theme = createMuiTheme(themeFile);
 
@@ -33,8 +34,16 @@ function App() {
         <Navbar />
         <Container>
           <Route exact component={Home} path='/' />
-          <Route component={Login} path='/login' />
-          <Route component={Signup} path='/signup' />
+          <AuthRoute
+            component={Login}
+            path='/login'
+            authenticated={authenticated}
+          />
+          <AuthRoute
+            component={Signup}
+            path='/signup'
+            authenticated={authenticated}
+          />
         </Container>
       </Router>
     </MuiThemeProvider>
