@@ -8,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 const styles = {
   card: {
@@ -17,16 +19,16 @@ const styles = {
   },
   image: {
     minWidth: 200,
-    height:500,
-    width:500,
     objectFit: "cover",
   },
-  content: { 
+  content: {
     padding: 25,
   },
 };
 
 const Scream = (props) => {
+  dayjs.extend(relativeTime);
+
   const {
     classes,
     scream: {
@@ -57,10 +59,10 @@ const Scream = (props) => {
           {userHandle}
         </Typography>
         <Typography variant='body2' color='textSecondary'>
-          {createdAt}
+          {dayjs(createdAt).fromNow()}
         </Typography>
         <Typography variant='body1'>{body}</Typography>
-        <Typography variant="body1">{screamId}</Typography>
+        <Typography variant='body1'>{screamId}</Typography>
       </CardContent>
     </Card>
   );
