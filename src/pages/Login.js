@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 import AppIcon from "../images/icon.png";
 
@@ -14,6 +15,15 @@ const styles = {
   icon: {
     maxWidth: "100px",
     margin: "20px auto",
+  },
+  pageTitle: {
+    magin: "10px auto",
+  },
+  textField: {
+    margin: "10px auto",
+  },
+  button: {
+    marginTop: 20,
   },
 };
 
@@ -57,6 +67,14 @@ const Login = ({ classes }) => {
             }}
             fullWidth
           />
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            className={classes.button}
+          >
+            LOGIN
+          </Button>
         </form>
       </Grid>
       <Grid item sm />
