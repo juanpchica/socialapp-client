@@ -14,8 +14,16 @@ import { Navbar } from "./components/Navbar";
 const theme = createMuiTheme(themeFile);
 
 //Validate if token exist and token is correct for user logged in
+let authenticated;
 const token = localStorage.FBIdToken;
 if (token) {
+  const decodedToken = jwtDecode(token);
+  if (decodedToken.exp * 1000 < Date.now()) {
+    window.location.href = "/login";
+    authenticated = false;
+  } else {
+    authenticated = true;
+  }
 }
 
 function App() {
