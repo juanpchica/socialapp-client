@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 import AppIcon from "../images/icon.png";
+import axios from "axios";
 
 const styles = {
   form: {
@@ -25,15 +26,35 @@ const styles = {
   button: {
     marginTop: 20,
   },
+  customError: {
+    color: "red",
+    fontSize: "0.8rem",
+    marginTop: 10,
+  },
 };
 
-const Login = ({ classes }) => {
+const Login = ({ classes, history }) => {
   const [dataUser, setDataUser] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setLoading(true);
+
+    //Send info to login url
+    axios
+      .post(`/login`, dataUser)
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        history.push("/");
+      })
+      .catch((err) => {
+        setErrors(err.response.data);
+        setLoading(false);
+      });
   };
 
   return (
@@ -55,6 +76,8 @@ const Login = ({ classes }) => {
               setDataUser({ ...dataUser, email: e.target.value });
             }}
             fullWidth
+            helperText={errors.email}
+            error={errors.email ? true : false}
           />
           <TextField
             id='password'
@@ -65,8 +88,15 @@ const Login = ({ classes }) => {
             onChange={(e) => {
               setDataUser({ ...dataUser, password: e.target.value });
             }}
+            helperText={errors.password}
+            error={errors.password ? true : false}
             fullWidth
           />
+          {errors.general && (
+            <Typography variant='body2' className={classes.customError}>
+              {errors.general}
+            </Typography>
+          )}
           <Button
             type='submit'
             variant='contained'
