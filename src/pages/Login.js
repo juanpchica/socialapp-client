@@ -11,33 +11,9 @@ import AppIcon from "../images/icon.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const styles = {
-  form: {
-    textAlign: "center",
-  },
-  icon: {
-    maxWidth: "100px",
-    margin: "20px auto",
-  },
-  pageTitle: {
-    magin: "10px auto",
-  },
-  textField: {
-    margin: "10px auto",
-  },
-  button: {
-    marginTop: 20,
-    position: "relative",
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: 10,
-  },
-  progress: {
-    position: "absolute",
-  },
-};
+const styles = (theme) => ({
+  ...theme.spreadThis,
+});
 
 const Login = ({ classes, history }) => {
   const [dataUser, setDataUser] = useState({ email: "", password: "" });
@@ -54,6 +30,7 @@ const Login = ({ classes, history }) => {
       .post(`/login`, dataUser)
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
         setLoading(false);
         history.push("/");
       })
