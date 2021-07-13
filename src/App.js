@@ -5,7 +5,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
+import Login from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Navbar } from "./components/Navbar";
 
