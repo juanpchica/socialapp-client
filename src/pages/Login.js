@@ -5,9 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import AppIcon from "../images/icon.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const styles = {
   form: {
@@ -25,11 +27,15 @@ const styles = {
   },
   button: {
     marginTop: 20,
+    position: "relative",
   },
   customError: {
     color: "red",
     fontSize: "0.8rem",
     marginTop: 10,
+  },
+  progress: {
+    position: "absolute",
   },
 };
 
@@ -80,6 +86,7 @@ const Login = ({ classes, history }) => {
             error={errors.email ? true : false}
           />
           <TextField
+            type='password'
             id='password'
             name='password'
             label='Password'
@@ -102,9 +109,17 @@ const Login = ({ classes, history }) => {
             variant='contained'
             color='primary'
             className={classes.button}
+            disabled={loading}
           >
-            LOGIN
+            Login
+            {loading && (
+              <CircularProgress size='30' className={classes.progress} />
+            )}
           </Button>
+          <br />
+          <small>
+            don't have an account? sign up <Link to='/signup'>here</Link>
+          </small>
         </form>
       </Grid>
       <Grid item sm />
