@@ -3,12 +3,20 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import themeFile from "./util/theme";
+
 import jwtDecode from "jwt-decode";
 
+//Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+//Pages
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+
+//Components
+import themeFile from "./util/theme";
 import { Navbar } from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
 
@@ -30,22 +38,24 @@ if (token) {
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Router>
-        <Navbar />
-        <Container>
-          <Route exact component={Home} path='/' />
-          <AuthRoute
-            component={Login}
-            path='/login'
-            authenticated={authenticated}
-          />
-          <AuthRoute
-            component={Signup}
-            path='/signup'
-            authenticated={authenticated}
-          />
-        </Container>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Navbar />
+          <Container>
+            <Route exact component={Home} path='/' />
+            <AuthRoute
+              component={Login}
+              path='/login'
+              authenticated={authenticated}
+            />
+            <AuthRoute
+              component={Signup}
+              path='/signup'
+              authenticated={authenticated}
+            />
+          </Container>
+        </Router>
+      </Provider>
     </MuiThemeProvider>
   );
 }
