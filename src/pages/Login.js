@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -11,33 +12,40 @@ import AppIcon from "../images/icon.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+// Redux stuff
+import { connect } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
+
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
 
-const Login = ({ classes, history }) => {
-  const [dataUser, setDataUser] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
+class login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      errors: {}
+    };
+  }
 
-  const handleSubmit = (e) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
+
+  handleSubmit = (e) => {
     e.preventDefault();
 
     setLoading(true);
 
-    //Send info to login url
-    axios
-      .post(`/login`, dataUser)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch((err) => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(userData, this.props.history);
   };
 
   return (
