@@ -38,8 +38,6 @@ class login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    setLoading(true);
-
     const userData = {
       email: this.state.email,
       password: this.state.password,
@@ -68,7 +66,7 @@ class login extends Component {
           <Typography variant='h2' className={classes.pageTitle}>
             Login
           </Typography>
-          <form noValidate onSubmit={handleSubmit}>
+          <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id='email'
               name='email'
