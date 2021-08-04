@@ -21,12 +21,14 @@ export default function (state = initialState, action) {
         ...state,
         authenticated: true,
       };
+    case SET_UNAUTHENTICATED:
+      return initialState;
     case SET_USER:
       return {
-        ...state,
-        credential: action.payload.credentials,
-        likes: action.payload.likes,
-        notifications: actions.payload.likes,
+        authenticated: true,
+        ...action.payload,
       };
+    default:
+      return state;
   }
 }
