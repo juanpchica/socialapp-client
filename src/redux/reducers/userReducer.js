@@ -5,6 +5,7 @@ import {
   LOADING_UI,
   LOADING_USER,
   SET_AUTHENTICATED,
+  SET_UNAUTHENTICATED,
 } from "../types";
 
 const initialState = {
