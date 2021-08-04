@@ -25,9 +25,15 @@ class login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {},
     };
   }
+
+  //When props load setState with propsValue - Errors
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.UI.errors) {
+  //     this.setState({ errors: nextProps.UI.errors });
+  //   }
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +57,9 @@ class login extends Component {
       classes,
       UI: { loading },
     } = this.props;
-    const { errors } = this.state;
+
+    //Setting errors from the state store UI
+    const errors = this.props.UI.errors ? this.props.UI.errors : {};
 
     return (
       <Grid container className={classes.form}>
