@@ -11,6 +11,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
 // Redux stuff
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
@@ -26,6 +28,7 @@ class login extends Component {
       email: "",
       password: "",
       errors: {},
+      loading: false,
     };
   }
 
@@ -42,7 +45,18 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    this.props.loginUser(userData, this.props.history);
+
+    axios
+      .post("/login", userData)
+      .then((res) => {
+        //setAuthorizationHeader(res.data.token);
+        //dispatch(getUserData());
+        //dispatch({ type: CLEAR_ERRORS });
+        //history.push("/");
+      })
+      .catch((err) => {});
+
+    //this.props.loginUser(userData, this.props.history);
   };
 
   handleChange = (event) => {
@@ -52,10 +66,7 @@ class login extends Component {
   };
 
   render() {
-    const {
-      classes,
-      UI: { loading },
-    } = this.props;
+    const { classes } = this.props;
     const { errors } = this.state;
 
     return (
@@ -100,10 +111,10 @@ class login extends Component {
               variant='contained'
               color='primary'
               className={classes.button}
-              disabled={loading}
+              disabled={this.loading}
             >
               Login
-              {loading && (
+              {this.loading && (
                 <CircularProgress size='30' className={classes.progress} />
               )}
             </Button>
@@ -126,16 +137,4 @@ login.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-  UI: state.UI,
-});
-
-const mapActionsToProps = {
-  loginUser,
-};
-
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(withStyles(styles)(login));
+export default withStyles(styles)(login);
