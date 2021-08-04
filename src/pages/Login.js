@@ -11,8 +11,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-
 // Redux stuff
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
@@ -49,7 +47,10 @@ class login extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
     const { errors } = this.state;
 
     return (
@@ -94,10 +95,10 @@ class login extends Component {
               variant='contained'
               color='primary'
               className={classes.button}
-              disabled={this.loading}
+              disabled={loading}
             >
               Login
-              {this.loading && (
+              {loading && (
                 <CircularProgress size='30' className={classes.progress} />
               )}
             </Button>
