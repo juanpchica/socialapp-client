@@ -19,8 +19,13 @@ export const loginUser = (userData, history) => (dispatch) => {
       //Establish axios headers authorizations token
       axios.defaults.headers.common["Authorization"] = FBIdToken;
 
+      //getting user data and setting it inside the store
+      dispatch(getUserData());
+
+      dispatch({ type: CLEAR_ERRORS });
+
       //Redirect to home
-      this.history.push("/");
+      history.push("/");
     })
     .catch((err) => {
       dispatch({
@@ -31,7 +36,6 @@ export const loginUser = (userData, history) => (dispatch) => {
 };
 
 export const getUserData = () => (dispatch) => {
-  dispatch({ type: LOADING_USER });
   axios
     .get("/user")
     .then((res) => {

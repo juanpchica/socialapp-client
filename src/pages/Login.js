@@ -28,7 +28,6 @@ class login extends Component {
       email: "",
       password: "",
       errors: {},
-      loading: false,
     };
   }
 
@@ -45,18 +44,6 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-
-    axios
-      .post("/login", userData)
-      .then((res) => {
-        //setAuthorizationHeader(res.data.token);
-        //dispatch(getUserData());
-        //dispatch({ type: CLEAR_ERRORS });
-        //history.push("/");
-      })
-      .catch((err) => {});
-
-    //this.props.loginUser(userData, this.props.history);
   };
 
   handleChange = (event) => {
