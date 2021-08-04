@@ -13,11 +13,7 @@ export const loginUser = (userData, history) => (dispatch) => {
   axios
     .post("/login", userData)
     .then((res) => {
-      const FBIdToken = `Bearer ${res.data.token}`;
-      localStorage.setItem("FBIdToken", FBIdToken);
-
-      //Establish axios headers authorizations token
-      axios.defaults.headers.common["Authorization"] = FBIdToken;
+      setAuthorizationToken(res.data.token);
 
       //getting user data and setting it inside the store
       dispatch(getUserData());
@@ -45,4 +41,13 @@ export const getUserData = () => (dispatch) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+//Set Authorization
+const setAuthorizationToken = (token) => {
+  const FBIdToken = `Bearer ${token}`;
+  localStorage.setItem("FBIdToken", FBIdToken);
+
+  //Establish axios headers authorizations token
+  axios.defaults.headers.common["Authorization"] = FBIdToken;
 };
