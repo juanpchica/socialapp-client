@@ -19,34 +19,28 @@ const styles = (theme) => ({
   ...theme.spreadThis,
 });
 
-const Signup = ({ classes, history }) => {
+const Signup = (props) => {
+  const {
+    classes,
+    history,
+    UI: { loading },
+    singupUser: signupUserProp,
+  } = props;
+
+  const errors = props.UI.errors ? props.UI.errors : {};
+
   const [dataUser, setDataUser] = useState({
     email: "",
     password: "",
     confirmPassword: "",
     handle: "",
   });
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setLoading(true);
-
     //Send info to login url
-    axios
-      .post(`/signup`, dataUser)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch((err) => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
+    signupUserProp(dataUser, history);
   };
 
   return (
