@@ -13,10 +13,14 @@ export const loginUser = (userData, history) => (dispatch) => {
   axios
     .post("/login", userData)
     .then((res) => {
-      //setAuthorizationHeader(res.data.token);
-      //dispatch(getUserData());
-      dispatch({ type: CLEAR_ERRORS });
-      history.push("/");
+      const FBIdToken = `Bearer ${res.data.token}`;
+      localStorage.setItem("FBIdToken", FBIdToken);
+
+      //Establish axios headers authorizations token
+      axios.defaults.headers.common["Authorization"] = FBIdToken;
+
+      //Redirect to home
+      this.history.push("/");
     })
     .catch((err) => {
       dispatch({
