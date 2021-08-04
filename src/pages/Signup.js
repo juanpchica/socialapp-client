@@ -11,6 +11,10 @@ import AppIcon from "../images/icon.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+//Importing redux connect and actionsCreators
+import { connect } from "react-redux";
+import { singupUser } from "../redux/actions/userActions";
+
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
@@ -139,4 +143,17 @@ const Signup = ({ classes, history }) => {
   );
 };
 
-export default withStyles(styles)(Signup);
+const mapStateToProps = function (state) {
+  return {
+    UI: state.UI,
+  };
+};
+
+const mapActionsToProps = {
+  singupUser,
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Signup));
