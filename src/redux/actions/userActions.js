@@ -4,7 +4,7 @@ import {
   SET_ERRORS,
   CLEAR_ERRORS,
   LOADING_UI,
-  LOADING_USER,
+  SET_UNAUTHENTICATED,
 } from "../types";
 import axios from "axios";
 
