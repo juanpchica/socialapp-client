@@ -31,6 +31,29 @@ export const loginUser = (userData, history) => (dispatch) => {
     });
 };
 
+export const singupUser = (newUserData, history) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/signup", newUserData)
+    .then((res) => {
+      setAuthorizationToken(res.data.token);
+
+      //getting user data and setting it inside the store
+      dispatch(getUserData());
+
+      dispatch({ type: CLEAR_ERRORS });
+
+      //Redirect to home
+      history.push("/");
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+
 export const getUserData = () => (dispatch) => {
   axios
     .get("/user")
