@@ -31,12 +31,6 @@ class login extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
-    }
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -44,6 +38,8 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+
+    this.props.loginUser(userData, this.props.history);
   };
 
   handleChange = (event) => {
@@ -124,4 +120,18 @@ login.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(login);
+//Set state which I want to bring from the store as props
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+//Which actions will be used inside this component
+const mapActionsToProps = {
+  loginUser,
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(login));
