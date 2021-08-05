@@ -5,6 +5,7 @@ const initialState = {
   credentials: {},
   likes: [],
   notifications: [],
+  loading: false,
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,12 @@ export default function (state = initialState, action) {
       return {
         authenticated: true,
         ...action.payload,
+        loading: false,
+      };
+    case LOADING_USER:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;
