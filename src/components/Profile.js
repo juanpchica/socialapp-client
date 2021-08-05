@@ -37,9 +37,11 @@ class Profile extends Component {
       authenticated ? (
         <Paper className={classes.paper}>
           <div className={classes.profile}>
-            <div className='profile-image'>
-              <img src={imageUrl} alt='Profile' />
-            </div>
+            {imageUrl && (
+              <div className='profile-image'>
+                <img src={imageUrl} alt='Profile' />
+              </div>
+            )}
             <hr />
             <div className='profile-details'>
               <MuiLink
