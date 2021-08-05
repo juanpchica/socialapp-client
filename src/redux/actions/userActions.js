@@ -74,6 +74,20 @@ export const logoutUser = () => (dispatch) => {
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+
+  //Update image
+  axios
+    .post("/user/image", formData)
+    .then((res) => {
+      dispatch(getUserData());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 //Set Authorization
 const setAuthorizationToken = (token) => {
   const FBIdToken = `Bearer ${token}`;

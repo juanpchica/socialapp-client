@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 
 //Redux
 import { connect } from "react-redux";
+import { uploadImage } from "../redux/actions/userActions";
 
 //Mui
 import Paper from "@material-ui/core/Paper";
@@ -28,14 +29,24 @@ const styles = (theme) => ({
 });
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.inputFileRef = React.createRef();
+  }
+
   handleImageChange(event) {
+    console.log(this);
     const image = event.target.files[0];
-    console.log(image);
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+
+    //Send image with redux
+    this.props.uploadImage(formData);
   }
 
   handleEditPicture = () => {
-    const fileInput = document.getElementById("imageInput");
-    fileInput.click();
+    this.inputFileRef.current.click();
   };
 
   render() {
@@ -59,6 +70,7 @@ class Profile extends Component {
                   type='file'
                   id='imageInput'
                   hidden='hidden'
+                  ref={this.inputFileRef}
                   onChange={this.handleImageChange}
                 />
                 <Tooltip title='Edit Profile picture' placement='top'>
@@ -147,6 +159,9 @@ const mapStateToProps = (state) => ({
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  uploadImage: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(mapStateToProps, { uploadImage })(
+  withStyles(styles)(Profile)
+);
