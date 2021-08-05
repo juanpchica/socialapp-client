@@ -11,6 +11,19 @@ const styles = (theme) => ({
 
 class Profile extends Component {
   render() {
+    const {
+      classes,
+      user: {
+        authenticated,
+        credentials: { handle, createdAt, imageUrl, bio, website, location },
+        loading
+      },
+    } = this.props;
+
+    let profileMarkup = !loading ?( authenticated ? (
+        <Paper></Paper>
+    ):()):(<p>Loading...</p>);
+
     return <div></div>;
   }
 }
@@ -19,7 +32,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-Profile.PropTypes = {
+Profile.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
