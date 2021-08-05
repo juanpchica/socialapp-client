@@ -106,20 +106,20 @@ class Profile extends Component {
               <hr />
               {location && (
                 <Fragment>
-                  <LocationOnIcon color='primary'>
-                    <span>{location}</span>
-                  </LocationOnIcon>
+                  <LocationOnIcon color='primary' />
+                  <span>{location}</span>
+
                   <hr />
                 </Fragment>
               )}
               {website && (
                 <Fragment>
-                  <LinkIcon>
-                    <a href={website} target='_blank' rel='noopener noreferrer'>
-                      {" "}
-                      {website}
-                    </a>
-                  </LinkIcon>
+                  <LinkIcon />
+                  <a href={website} target='_blank' rel='noopener noreferrer'>
+                    {" "}
+                    {website}
+                  </a>
+                  <hr />
                 </Fragment>
               )}
               <CalendarToday color='primary' />{" "}
