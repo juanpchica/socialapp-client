@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 //My Components
 import MyButton from "../util/MyButton";
 
-export const Navbar = ({ authenticated }) => {
+const Navbar = ({ authenticated }) => {
   return (
     <AppBar position='static'>
       <Toolbar className='nav-container'>
