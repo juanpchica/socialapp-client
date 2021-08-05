@@ -32,7 +32,7 @@ export const Home = () => {
   }
 
   return (
-    <Grid container spacing={8}>
+    <Grid container spacing={8} style={{ marginTop: 10 }}>
       <Grid item xs={12} sm={8}>
         {recentScreamsMarkup}
       </Grid>

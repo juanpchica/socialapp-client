@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 //Mui
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import CalendarToday from "@material-ui/icons/CalendarToday";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import Button from "@material-ui/core/Button";
@@ -71,7 +71,7 @@ class Profile extends Component {
                   </LinkIcon>
                 </Fragment>
               )}
-              <CalendarTodayIcon color='primary' />{" "}
+              <CalendarToday color='primary' />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")} </span>
             </div>
           </div>

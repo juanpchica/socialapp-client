@@ -83,5 +83,11 @@ export default {
         },
       },
     },
+    buttons: {
+      textAlign: "center",
+      "& a": {
+        margin: "20px 10px",
+      },
+    },
   },
 };

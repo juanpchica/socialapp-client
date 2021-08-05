@@ -15,7 +15,6 @@ const styles = {
   card: {
     display: "flex",
     marginBottom: 15,
-    marginTop: 15,
   },
   image: {
     minWidth: 200,
