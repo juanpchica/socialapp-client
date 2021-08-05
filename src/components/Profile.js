@@ -24,6 +24,9 @@ import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturnIcon from "@material-ui/icons/KeyboardReturn";
 import { Fragment } from "react";
 
+//Components
+import EditDetails from "./EditDetails";
+
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
@@ -127,6 +130,7 @@ class Profile extends Component {
                 <KeyboardReturnIcon color='primary' />
               </IconButton>
             </Tooltip>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
