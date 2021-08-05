@@ -10,11 +10,16 @@ import { connect } from "react-redux";
 //Mui
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
+
+//Icons
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import EditIcon from "@material-ui/icons/Edit";
 
 import { Fragment } from "react";
 
@@ -23,6 +28,16 @@ const styles = (theme) => ({
 });
 
 class Profile extends Component {
+  handleImageChange(event) {
+    const image = event.target.files[0];
+    console.log(image);
+  }
+
+  handleEditPicture = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.click();
+  };
+
   render() {
     const {
       classes,
@@ -38,8 +53,22 @@ class Profile extends Component {
         <Paper className={classes.paper}>
           <div className={classes.profile}>
             {imageUrl && (
-              <div className='profile-image'>
-                <img src={imageUrl} alt='Profile' />
+              <div className='image-wrapper'>
+                <img src={imageUrl} className='profile-image' alt='Profile' />
+                <input
+                  type='file'
+                  id='imageInput'
+                  hidden='hidden'
+                  onChange={this.handleImageChange}
+                />
+                <Tooltip title='Edit Profile picture' placement='top'>
+                  <IconButton
+                    onClick={this.handleEditPicture}
+                    className='button'
+                  >
+                    <EditIcon color='primary' />
+                  </IconButton>
+                </Tooltip>
               </div>
             )}
             <hr />
