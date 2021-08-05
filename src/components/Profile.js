@@ -9,6 +9,9 @@ import { connect } from "react-redux";
 //Mui
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { Fragment } from "react";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -43,6 +46,17 @@ class Profile extends Component {
                 @{handle}
               </MuiLink>
               <hr />
+
+              {bio && <Typography variant='body2'>{bio}</Typography>}
+              <hr />
+              {location && (
+                <Fragment>
+                  <LocationOn color='primary'>
+                    <span>{location}</span>
+                  </LocationOn>
+                  <hr />
+                </Fragment>
+              )}
             </div>
           </div>
         </Paper>
@@ -53,7 +67,7 @@ class Profile extends Component {
       <p>Loading...</p>
     );
 
-    return <div></div>;
+    return profileMarkup;
   }
 }
 
