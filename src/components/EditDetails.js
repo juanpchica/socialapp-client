@@ -21,6 +21,9 @@ import { connect } from "react-redux";
 import { editUserDetails, getUserData } from "../redux/actions/userActions";
 import { Fragment } from "react";
 
+//Components
+import MyButton from "../util/MyButton";
+
 const styles = (theme) => ({
   ...theme.spreatThis,
   button: {
@@ -71,11 +74,13 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title='Edit User' className={classes.button}>
-          <IconButton onClick={this.handleOpen}>
-            <EditIcon color='primary' />
-          </IconButton>
-        </Tooltip>
+        <MyButton
+          onClick={this.handleOpen}
+          tip='Edit User'
+          tipClassName={classes.button}
+        >
+          <EditIcon color='primary' />
+        </MyButton>
 
         <Dialog
           open={this.state.open}
