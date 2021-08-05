@@ -88,14 +88,14 @@ export const uploadImage = (formData) => (dispatch) => {
     });
 };
 
-export const editUserDetails = (userDetails) => (distpatch) => {
+export const editUserDetails = (userDetails) => (dispatch) => {
   dispatch({ type: LOADING_USER });
 
   //Update userDetails in server
   axios
     .post("/user", userDetails)
     .then((res) => {
-      distpatch(getUserData());
+      dispatch(getUserData());
     })
     .catch((err) => console.log(err));
 };
