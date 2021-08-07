@@ -16,6 +16,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 // Redux
 import { connect } from "react-redux";
+import { likeScream } from "../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -35,21 +36,20 @@ const styles = {
   },
 };
 
-const Scream = (props) => {
+const Scream = ({
+  classes,
+  scream: {
+    body,
+    createdAt,
+    userImage,
+    userHandle,
+    screamId,
+    likeCount,
+    commentCount,
+  },
+  likeScream,
+}) => {
   dayjs.extend(relativeTime);
-
-  const {
-    classes,
-    scream: {
-      body,
-      createdAt,
-      userImage,
-      userHandle,
-      screamId,
-      likeCount,
-      commentCount,
-    },
-  } = props;
 
   return (
     <Card className={classes.card}>
@@ -73,7 +73,11 @@ const Scream = (props) => {
         <Typography variant='body1'>{body}</Typography>
         <Typography variant='body1'>{screamId}</Typography>
         <div className={classes.contentButton}>
-          <button>
+          <button
+            onClick={() => {
+              likeScream(screamId);
+            }}
+          >
             <FavoriteIcon color='primary' />
           </button>
           {likeCount} Likes
@@ -89,4 +93,6 @@ const mapPropsToState = function (state) {
   };
 };
 
-export default connect(mapPropsToState, {})(withStyles(styles)(Scream));
+export default connect(mapPropsToState, { likeScream })(
+  withStyles(styles)(Scream)
+);

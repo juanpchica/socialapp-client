@@ -1,4 +1,9 @@
-import { LOADING_SCREAMS, SET_SCREAMS } from "../types";
+import {
+  LOADING_SCREAMS,
+  SET_SCREAMS,
+  LIKE_SCREAM,
+  UNLIKE_SCREAM,
+} from "../types";
 
 const initialState = {
   screams: [],

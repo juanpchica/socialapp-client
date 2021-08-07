@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOADING_SCREAMS, SET_SCREAMS } from "../types";
+import { LIKE_SCREAM, LOADING_SCREAMS, SET_SCREAMS } from "../types";
 
 //Fetching Screams
 export const getScreams = () => {
@@ -13,4 +13,16 @@ export const getScreams = () => {
       })
       .catch((err) => console.log(err));
   };
+};
+
+//Liking a scream
+export const likeScream = (screamId) => (dispatch) => {
+  axios
+    .get(`/scream/${screamId}/like`)
+    .then(({ data }) => {
+      dispatch({ type: LIKE_SCREAM, payload: data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
