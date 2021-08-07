@@ -11,12 +11,9 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-// Icons
-import FavoriteIcon from "@material-ui/icons/Favorite";
-
 // Redux
 import { connect } from "react-redux";
-import { likeScream } from "../redux/actions/dataActions";
+import LikeButton from "./LikeButton";
 
 const styles = {
   card: {
@@ -47,7 +44,6 @@ const Scream = ({
     likeCount,
     commentCount,
   },
-  likeScream,
 }) => {
   dayjs.extend(relativeTime);
 
@@ -73,13 +69,17 @@ const Scream = ({
         <Typography variant='body1'>{body}</Typography>
         <Typography variant='body1'>{screamId}</Typography>
         <div className={classes.contentButton}>
-          <button
-            onClick={() => {
-              likeScream(screamId);
+          <LikeButton
+            scream={{
+              body,
+              createdAt,
+              userImage,
+              userHandle,
+              screamId,
+              likeCount,
+              commentCount,
             }}
-          >
-            <FavoriteIcon color='primary' />
-          </button>
+          />
           {likeCount} Likes
         </div>
       </CardContent>
@@ -93,6 +93,4 @@ const mapPropsToState = function (state) {
   };
 };
 
-export default connect(mapPropsToState, { likeScream })(
-  withStyles(styles)(Scream)
-);
+export default connect(mapPropsToState)(withStyles(styles)(Scream));
