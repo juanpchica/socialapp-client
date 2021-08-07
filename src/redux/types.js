@@ -10,3 +10,5 @@ export const LOADING_UI = "LOADING_UI";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 //Data reducer types
+export const SET_SCREAMS = "SET_SCREAMS";
+export const LOADING_SCREAMS = "LOADING_SCREAMS";
