@@ -11,6 +11,12 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
+// Icons
+import FavoriteIcon from "@material-ui/icons/Favorite";
+
+// Redux
+import { connect } from "react-redux";
+
 const styles = {
   card: {
     display: "flex",
@@ -22,6 +28,10 @@ const styles = {
   },
   content: {
     padding: 25,
+  },
+  contentButton: {
+    display: "flex",
+    alignItems: "center",
   },
 };
 
@@ -62,9 +72,23 @@ const Scream = (props) => {
         </Typography>
         <Typography variant='body1'>{body}</Typography>
         <Typography variant='body1'>{screamId}</Typography>
+        <div className={classes.contentButton}>
+          <button>
+            <FavoriteIcon color='primary' />
+          </button>
+          {likeCount} Likes
+        </div>
       </CardContent>
     </Card>
   );
 };
 
-export default withStyles(styles)(Scream);
+const mapPropsToState = function (state) {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapPropsToState, { likeScream })(
+  withStyles(styles)(Scream)
+);
