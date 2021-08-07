@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
+import PropTypes from "prop-types";
+
 import MyButton from "../util/MyButton";
 
 //Redux
@@ -55,7 +57,12 @@ class DeleteButton extends Component {
           <DeleteOutlineIcon color='secondary' />
         </MyButton>
 
-        <Dialog open={this.state.open} onClose={this.handleClose}>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth='sm'
+        >
           <DialogTitle>
             Are you sure you want to delete this scream ?
           </DialogTitle>
@@ -72,6 +79,12 @@ class DeleteButton extends Component {
     );
   }
 }
+
+DeleteButton.propTypes = {
+  deleteScream: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
+  screamId: PropTypes.string.isRequired,
+};
 
 export default connect(null, { deleteScream })(
   withStyles(styles)(DeleteButton)

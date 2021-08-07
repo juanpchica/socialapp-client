@@ -17,7 +17,12 @@ export const getScreams = () => {
       .then((res) => {
         dispatch({ type: SET_SCREAMS, payload: res.data });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch({
+          type: SET_SCREAMS,
+          payload: [],
+        });
+      });
   };
 };
 
