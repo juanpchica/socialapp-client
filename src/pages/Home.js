@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
 
 import Scream from "../components/Scream";
 import Profile from "../components/Profile";
@@ -9,20 +8,7 @@ import Profile from "../components/Profile";
 import { connect } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
 
-const Home = ({ data: { loading, screams } }) => {
-  console.log(screams);
-
-  const [screams, setScreams] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getScreams = async () => {
-    const { data } = await axios.get(`/screams`);
-
-    //Set screams and show them
-    setScreams(data);
-    setIsLoading(false);
-  };
-
+const Home = ({ data: { loading: isLoading, screams }, getScreams }) => {
   useEffect(() => {
     getScreams();
   }, []);
@@ -31,7 +17,7 @@ const Home = ({ data: { loading, screams } }) => {
 
   if (screams && !isLoading) {
     recentScreamsMarkup = screams.map((scream, index) => {
-      return <Scream key={index} scream={scream}></Scream>;
+      return <Scream key={index} scream={scream} />;
     });
   } else {
     recentScreamsMarkup = <p>Loading more scream....</p>;
