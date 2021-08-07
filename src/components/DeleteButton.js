@@ -10,14 +10,17 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 //Icons
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
-  button: {
-    float: "right",
+  deleteButton: {
+    position: "absolute",
+    right: 0,
+    top: 0,
   },
 });
 
@@ -26,20 +29,43 @@ class DeleteButton extends Component {
     open: false,
   };
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleDelete = () => {
+    this.props.deleteScream(this.props.screamId);
+    this.handleClose();
+  };
+
   render() {
+    const { classes } = this.props;
+
     return (
       <Fragment>
-        <MyButton tip='Delete Scream' onClick={this.handleOpen}>
+        <MyButton
+          tip='Delete Scream'
+          onClick={this.handleOpen}
+          btnClassName={classes.deleteButton}
+        >
           <DeleteOutlineIcon color='secondary' />
         </MyButton>
 
-        <Dialog open={this.state.open}>
+        <Dialog open={this.state.open} onClose={this.handleClose}>
           <DialogTitle>
             Are you sure you want to delete this scream ?
           </DialogTitle>
           <DialogActions>
-            <Button>Cancel</Button>
-            <Button>Delete</Button>
+            <Button color='primary' onClick={this.handleClose}>
+              Cancel
+            </Button>
+            <Button color='secondary' onClick={this.handleDelete}>
+              Delete
+            </Button>
           </DialogActions>
         </Dialog>
       </Fragment>

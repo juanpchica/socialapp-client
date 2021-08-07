@@ -49,7 +49,7 @@ export const deleteScream = (screamId) => (dispatch) => {
   axios
     .delete(`/scream/${screamId}`)
     .then((res) => {
-      dispatch({ type: DELETE_SCREAM, payload: res.data });
+      dispatch({ type: DELETE_SCREAM, payload: screamId });
     })
     .catch((err) => console.log(err));
 };
