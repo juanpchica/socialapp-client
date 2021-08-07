@@ -13,6 +13,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 // Redux
 import { connect } from "react-redux";
+
+//My Components
+import DeleteButton from "./DeleteButton";
 import LikeButton from "./LikeButton";
 
 const styles = {
@@ -44,11 +47,21 @@ const Scream = ({
     likeCount,
     commentCount,
   },
+  user: {
+    authenticated,
+    credentials: { handle: handleActualUser },
+  },
 }) => {
   dayjs.extend(relativeTime);
 
+  const deleteButton =
+    authenticated && userHandle === handleActualUser ? (
+      <DeleteButton screamId={screamId} />
+    ) : null;
+
   return (
     <Card className={classes.card}>
+      {deleteButton}
       <CardMedia
         image={userImage}
         title='Profile Image'
