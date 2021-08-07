@@ -69,17 +69,7 @@ const Scream = ({
         <Typography variant='body1'>{body}</Typography>
         <Typography variant='body1'>{screamId}</Typography>
         <div className={classes.contentButton}>
-          <LikeButton
-            scream={{
-              body,
-              createdAt,
-              userImage,
-              userHandle,
-              screamId,
-              likeCount,
-              commentCount,
-            }}
-          />
+          <LikeButton screamId={screamId} />
           {likeCount} Likes
         </div>
       </CardContent>
