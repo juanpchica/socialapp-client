@@ -33,6 +33,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case DELETE_SCREAM:
+      return {
+        ...state,
+        screams: state.screams.filter(
+          (scream) => scream.screamId !== action.payload
+        ),
+      };
     default:
       return {
         ...state,
