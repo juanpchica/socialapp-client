@@ -5,7 +5,13 @@ import axios from "axios";
 import Scream from "../components/Scream";
 import Profile from "../components/Profile";
 
-export const Home = () => {
+//Redux
+import { connect } from "react-redux";
+import { getScreams } from "../redux/actions/dataActions";
+
+const Home = ({ data: { loading, screams } }) => {
+  console.log(screams);
+
   const [screams, setScreams] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,3 +48,15 @@ export const Home = () => {
     </Grid>
   );
 };
+
+const mapPropsToState = (state) => {
+  return {
+    data: state.data,
+  };
+};
+
+const mapPropsToActions = {
+  getScreams,
+};
+
+export default connect(mapPropsToState, mapPropsToActions)(Home);
