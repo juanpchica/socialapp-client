@@ -89,6 +89,4 @@ const mapPropsToState = function (state) {
   };
 };
 
-export default connect(mapPropsToState, { likeScream })(
-  withStyles(styles)(Scream)
-);
+export default connect(mapPropsToState, {})(withStyles(styles)(Scream));

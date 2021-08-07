@@ -18,6 +18,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+    case LIKE_SCREAM:
+    case UNLIKE_SCREAM:
+      const indexScream = state.screams.findIndex(
+        (scream) => scream.screamId === action.payload.screamId
+      );
+      state.screams[indexScream] = action.payload;
+
+      return {
+        ...state,
+      };
     default:
       return {
         ...state,
