@@ -33,4 +33,6 @@ class DeleteButton extends Component {
   }
 }
 
-export default withStyles(styles)(DeleteButton);
+export default connect(null, { deleteScream })(
+  withStyles(styles)(DeleteButton)
+);
