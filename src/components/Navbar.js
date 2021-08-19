@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 
 //My Components
 import MyButton from "../util/MyButton";
+import PostScream from "./PostScream";
 
 const Navbar = ({ authenticated }) => {
   return (
@@ -24,9 +25,7 @@ const Navbar = ({ authenticated }) => {
       <Toolbar className='nav-container'>
         {authenticated ? (
           <Fragment>
-            <MyButton tip='Post a Scream!'>
-              <AddIcon />
-            </MyButton>
+            <PostScream />
             <Link to='/'>
               <MyButton tip='Home'>
                 <HomeIcon />
