@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 //Mui
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -12,6 +13,10 @@ import AddIcon from "@material-ui/icons/Add";
 
 //Redux
 import { connect } from "react-redux";
+import { postScream } from "../redux/actions/dataActions";
+
+//My Components
+import MyButton from "../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
@@ -33,6 +38,12 @@ const mapPropsToState = (state) => ({
 
 const mapPropsToActions = {
   postScream,
+};
+
+PostScream.propTypes = {
+  UI: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  postScream: PropTypes.func.isRequired,
 };
 
 export default connect(
