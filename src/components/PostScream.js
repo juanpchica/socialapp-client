@@ -15,9 +15,6 @@ import { connect } from "react-redux";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
-  button: {
-    float: "right",
-  },
 });
 
 const PostScream = () => {
@@ -30,4 +27,15 @@ const PostScream = () => {
   );
 };
 
-export default PostScream;
+const mapPropsToState = (state) => ({
+  UI: state.UI,
+});
+
+const mapPropsToActions = {
+  postScream,
+};
+
+export default connect(
+  mapPropsToState,
+  mapPropsToActions
+)(withStyles(styles)(PostScream));
