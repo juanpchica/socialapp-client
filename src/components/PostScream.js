@@ -1,7 +1,33 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+//Mui
+import withStyles from "@material-ui/core/styles/withStyles";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+
+//Icons
+import AddIcon from "@material-ui/icons/Add";
+
+//Redux
+import { connect } from "react-redux";
+
+const styles = (theme) => ({
+  ...theme.spreatThis,
+  button: {
+    float: "right",
+  },
+});
 
 const PostScream = () => {
-  return <div>Creating a post</div>;
+  return (
+    <Fragment>
+      <MyButton tip='Post a Scream!'>
+        <AddIcon />
+      </MyButton>
+    </Fragment>
+  );
 };
 
 export default PostScream;
