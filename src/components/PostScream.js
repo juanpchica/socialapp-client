@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 
 //Mui
@@ -23,11 +23,39 @@ const styles = (theme) => ({
 });
 
 const PostScream = () => {
+  //Local State
+  const [open, setOpen] = useState(false);
+  const [body, setBody] = useState("");
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+  };
+
   return (
     <Fragment>
-      <MyButton tip='Post a Scream!'>
+      <MyButton
+        tip='Post a Scream!'
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
         <AddIcon />
       </MyButton>
+      <Dialog open={open} onClose={closeDialog}>
+        <DialogContent>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              value={body}
+              onChange={(e) => {
+                setBody(e.target.value);
+              }}
+            />
+          </form>
+        </DialogContent>
+      </Dialog>
     </Fragment>
   );
 };
