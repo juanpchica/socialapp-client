@@ -37,7 +37,7 @@ const PostScream = () => {
   return (
     <Fragment>
       <MyButton
-        tip='Post a Scream!'
+        tip='Post a Scream! test'
         onClick={() => {
           setOpen(true);
         }}
