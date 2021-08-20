@@ -78,14 +78,23 @@ const PostScream = (props) => {
               multiline
               rows='3'
               placeholder='Scream at your fellow apes'
-              error={errors.body}
+              error={errors.body ? true : false}
+              helperText={errors.body}
+              className={classes.textField}
               value={body}
+              fullWidth
               onChange={(e) => {
                 setBody(e.target.value);
               }}
             />
-            <Button type='submit' color='primary'>
-              Post
+            <Button
+              type='submit'
+              variant='contained'
+              className={classes.submitButton}
+              color='primary'
+              disabled={loading}
+            >
+              Submit
             </Button>
           </form>
         </DialogContent>
