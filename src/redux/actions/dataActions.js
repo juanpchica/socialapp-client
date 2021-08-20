@@ -37,7 +37,7 @@ export const postScream = (newScream) => (dispatch) => {
     .post("/scream", newScream)
     .then((res) => {
       dispatch({ type: POST_SCREAM, payload: res.data });
-      dispatch({ type: CLEAR_ERRORS });
+      clearErrors();
     })
     .catch((err) => {
       dispatch({ type: SET_ERRORS, payload: err.response.data });
@@ -75,4 +75,8 @@ export const deleteScream = (screamId) => (dispatch) => {
       dispatch({ type: DELETE_SCREAM, payload: screamId });
     })
     .catch((err) => console.log(err));
+};
+
+export const clearErrors = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

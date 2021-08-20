@@ -15,7 +15,7 @@ import CloseIcon from "@material-ui/icons/Close";
 
 //Redux
 import { connect } from "react-redux";
-import { postScream } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../redux/actions/dataActions";
 
 //My Components
 import MyButton from "../util/MyButton";
@@ -42,6 +42,7 @@ const PostScream = (props) => {
     classes,
     UI: { loading },
     postScream,
+    clearErrors,
   } = props;
   const errors = props.UI.errors ? props.UI.errors : {};
 
@@ -51,6 +52,7 @@ const PostScream = (props) => {
 
   const closeDialog = () => {
     setOpen(false);
+    clearErrors();
   };
   const openDialog = () => {
     setOpen(true);
@@ -58,7 +60,6 @@ const PostScream = (props) => {
 
   const handleSubmit = function (e) {
     e.preventDefault();
-
     postScream(data);
   };
 
@@ -115,12 +116,14 @@ const mapPropsToState = (state) => ({
 
 const mapPropsToActions = {
   postScream,
+  clearErrors,
 };
 
 PostScream.propTypes = {
   UI: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 export default connect(
