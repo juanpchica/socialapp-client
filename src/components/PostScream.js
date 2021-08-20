@@ -7,9 +7,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 //Icons
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
 
 //Redux
 import { connect } from "react-redux";
@@ -36,12 +38,16 @@ const styles = (theme) => ({
 });
 
 const PostScream = (props) => {
-  console.log(props);
+  const {
+    classes,
+    UI: { loading },
+    postScream,
+  } = props;
+  const errors = props.UI.errors ? props.UI.errors : {};
 
   //Local State
   const [open, setOpen] = useState(false);
   const [body, setBody] = useState("");
-  const [errors, setErrors] = useState({});
 
   const closeDialog = () => {
     setOpen(false);
