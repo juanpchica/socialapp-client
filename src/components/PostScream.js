@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 //Mui
@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 //Icons
 import AddIcon from "@material-ui/icons/Add";
@@ -43,6 +44,7 @@ const PostScream = (props) => {
     UI: { loading },
     postScream,
     clearErrors,
+    screams,
   } = props;
   const errors = props.UI.errors ? props.UI.errors : {};
 
@@ -62,6 +64,11 @@ const PostScream = (props) => {
     e.preventDefault();
     postScream(data);
   };
+
+  useEffect(() => {
+    setOpen(false);
+    setData({ body: "" });
+  }, [screams]);
 
   return (
     <Fragment>
@@ -102,6 +109,12 @@ const PostScream = (props) => {
               disabled={loading}
             >
               Submit
+              {loading && (
+                <CircularProgress
+                  size={30}
+                  className={classes.progressSpinner}
+                />
+              )}
             </Button>
           </form>
         </DialogContent>
@@ -112,6 +125,7 @@ const PostScream = (props) => {
 
 const mapPropsToState = (state) => ({
   UI: state.UI,
+  screams: state.data.screams,
 });
 
 const mapPropsToActions = {
