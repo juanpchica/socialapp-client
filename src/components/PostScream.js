@@ -20,39 +20,73 @@ import MyButton from "../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
+  submitButton: {
+    position: "relative",
+    float: "right",
+    marginTop: 10,
+  },
+  progressSpinner: {
+    position: "absolute",
+  },
+  closeButton: {
+    position: "absolute",
+    left: "91%",
+    top: "6%",
+  },
 });
 
-const PostScream = () => {
+const PostScream = (props) => {
+  console.log(props);
+
   //Local State
   const [open, setOpen] = useState(false);
   const [body, setBody] = useState("");
+  const [errors, setErrors] = useState({});
+
   const closeDialog = () => {
     setOpen(false);
+  };
+  const openDialog = () => {
+    setOpen(true);
   };
 
   const handleSubmit = function (e) {
     e.preventDefault();
+
+    postScream(body);
   };
 
   return (
     <Fragment>
-      <MyButton
-        tip='Post a Scream! test'
-        onClick={() => {
-          setOpen(true);
-        }}
-      >
+      <MyButton tip='Post a Scream! test' onClick={openDialog}>
         <AddIcon />
       </MyButton>
-      <Dialog open={open} onClose={closeDialog}>
+      <Dialog open={open} onClose={closeDialog} fullWidth maxWidth='sm'>
+        <MyButton
+          tip='Close'
+          onClick={closeDialog}
+          tipClassName={classes.closeButton}
+        >
+          <CloseIcon />
+        </MyButton>
+        <DialogTitle>Post a new scream</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <TextField
+              name='body'
+              label='SCREAM!!'
+              multiline
+              rows='3'
+              placeholder='Scream at your fellow apes'
+              error={errors.body}
               value={body}
               onChange={(e) => {
                 setBody(e.target.value);
               }}
             />
+            <Button type='submit' color='primary'>
+              Post
+            </Button>
           </form>
         </DialogContent>
       </Dialog>
