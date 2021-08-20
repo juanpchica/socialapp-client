@@ -47,7 +47,7 @@ const PostScream = (props) => {
 
   //Local State
   const [open, setOpen] = useState(false);
-  const [body, setBody] = useState("");
+  const [data, setData] = useState({ body: "" });
 
   const closeDialog = () => {
     setOpen(false);
@@ -59,7 +59,7 @@ const PostScream = (props) => {
   const handleSubmit = function (e) {
     e.preventDefault();
 
-    postScream(body);
+    postScream(data);
   };
 
   return (
@@ -87,10 +87,10 @@ const PostScream = (props) => {
               error={errors.body ? true : false}
               helperText={errors.body}
               className={classes.textField}
-              value={body}
+              value={data.body}
               fullWidth
               onChange={(e) => {
-                setBody(e.target.value);
+                setData({ body: e.target.value });
               }}
             />
             <Button
