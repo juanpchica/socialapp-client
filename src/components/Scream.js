@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 //My Components
 import DeleteButton from "./DeleteButton";
 import LikeButton from "./LikeButton";
+import ScreamDialog from "./ScreamDialog";
 
 //Icons
 import Comment from "@material-ui/icons/Comment";
@@ -93,6 +94,7 @@ const Scream = ({
             <Comment color='primary' />
           </MyButton>
           {commentCount} Comments
+          <ScreamDialog screamId={screamId} />
         </div>
       </CardContent>
     </Card>
