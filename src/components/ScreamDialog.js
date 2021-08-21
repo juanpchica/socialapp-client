@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 //MUI
-import { Dialog } from "@material-ui/core";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 //My Components
@@ -17,13 +18,31 @@ const styles = {
   },
 };
 
-const ScreamDialog = ({ classes }) => {
+const ScreamDialog = ({ classes, screamId }) => {
+  const [open, setOpen] = useState(false);
+
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
+  const openDialog = () => {
+    setOpen(true);
+  };
+
+  const dialogMarkup = "";
+
   return (
     <Fragment>
-      <MyButton tip='Expand Scream!!!' btnClassName={classes.buttonDialog}>
+      <MyButton
+        tip='Expand Scream!!!'
+        btnClassName={classes.buttonDialog}
+        onClick={openDialog}
+      >
         <UnfoldMoreIcon color='primary' />
       </MyButton>
-      <Dialog></Dialog>
+      <Dialog open={open} onClose={closeDialog} fullWidth maxWidth='sm'>
+        <DialogContent>{dialogMarkup}</DialogContent>
+      </Dialog>
     </Fragment>
   );
 };
