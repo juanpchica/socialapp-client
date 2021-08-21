@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import withStyles from "@material-ui/core/styles/withStyles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 //My Components
 import MyButton from "../util/MyButton";
@@ -23,7 +24,7 @@ const styles = {
   },
 };
 
-const ScreamDialog = ({ classes, screamId }) => {
+const ScreamDialog = ({ classes, screamId, getScream, UI: { loading } }) => {
   const [open, setOpen] = useState(false);
 
   const closeDialog = () => {
@@ -32,9 +33,16 @@ const ScreamDialog = ({ classes, screamId }) => {
 
   const openDialog = () => {
     setOpen(true);
+    getScream(screamId);
   };
 
-  const dialogMarkup = "";
+  const dialogMarkup = loading ? (
+    <div className={classes.spinnerDiv}>
+      <CircularProgress size={200} thickness={2} />
+    </div>
+  ) : (
+    <div>works</div>
+  );
 
   return (
     <Fragment>
