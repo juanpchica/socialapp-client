@@ -9,6 +9,7 @@ import {
   SET_ERRORS,
   POST_SCREAM,
   CLEAR_ERRORS,
+  SET_SCREAM,
 } from "../types";
 
 //Fetching Screams
@@ -28,6 +29,18 @@ export const getScreams = () => {
         });
       });
   };
+};
+
+// Getting only one scream
+export const getScream = (screamId) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/scream/${screamId}`)
+    .then((res) => {
+      dispatch({ type: SET_SCREAM, payload: res.data });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch((err) => console.log(err));
 };
 
 //Post a new Scream
