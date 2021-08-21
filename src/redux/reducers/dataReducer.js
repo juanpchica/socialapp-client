@@ -38,7 +38,9 @@ const reducer = (state = initialState, action) => {
         (scream) => scream.screamId === action.payload.screamId
       );
       state.screams[indexScream] = action.payload;
-
+      if (state.scream.screamId === action.payload.screamId) {
+        state.scream = action.payload;
+      }
       return {
         ...state,
       };
