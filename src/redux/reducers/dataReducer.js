@@ -5,11 +5,13 @@ import {
   UNLIKE_SCREAM,
   DELETE_SCREAM,
   POST_SCREAM,
+  SET_SCREAM,
 } from "../types";
 
 const initialState = {
   screams: [],
   loading: false,
+  scream: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +21,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         screams: action.payload,
         loading: false,
+      };
+    case SET_SCREAM:
+      return {
+        ...state,
+        scream: action.payload,
       };
     case LOADING_SCREAMS:
       return {
