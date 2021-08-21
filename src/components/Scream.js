@@ -18,6 +18,10 @@ import { connect } from "react-redux";
 import DeleteButton from "./DeleteButton";
 import LikeButton from "./LikeButton";
 
+//Icons
+import Comment from "@material-ui/icons/Comment";
+import MyButton from "../util/MyButton";
+
 const styles = {
   card: {
     display: "flex",
@@ -85,6 +89,10 @@ const Scream = ({
         <div className={classes.contentButton}>
           <LikeButton screamId={screamId} />
           {likeCount} Likes
+          <MyButton tip='Comments'>
+            <Comment color='primary' />
+          </MyButton>
+          {commentCount} Comments
         </div>
       </CardContent>
     </Card>
