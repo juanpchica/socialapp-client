@@ -10,6 +10,7 @@ import {
   POST_SCREAM,
   CLEAR_ERRORS,
   SET_SCREAM,
+  STOP_LOADING_UI,
 } from "../types";
 
 //Fetching Screams
