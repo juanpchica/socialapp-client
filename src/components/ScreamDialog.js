@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 //MUI
 import { Dialog } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 //My Components
 import MyButton from "../util/MyButton";
@@ -9,10 +10,17 @@ import MyButton from "../util/MyButton";
 //Icons
 import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
 
-const ScreamDialog = () => {
+const styles = {
+  buttonDialog: {
+    position: "absolute",
+    right: "15px",
+  },
+};
+
+const ScreamDialog = ({ classes }) => {
   return (
     <Fragment>
-      <MyButton tip='Expand Scream!!!'>
+      <MyButton tip='Expand Scream!!!' btnClassName={classes.buttonDialog}>
         <UnfoldMoreIcon color='primary' />
       </MyButton>
       <Dialog></Dialog>
@@ -20,4 +28,4 @@ const ScreamDialog = () => {
   );
 };
 
-export default ScreamDialog;
+export default withStyles(styles)(ScreamDialog);
