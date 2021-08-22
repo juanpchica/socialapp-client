@@ -23,6 +23,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 //Redux
 import { connect } from "react-redux";
 import { getScream } from "../redux/actions/dataActions";
+import Comments from "./Comments";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
@@ -110,6 +111,8 @@ const ScreamDialog = ({
         </MyButton>
         <span>{commentCount} comments</span>
       </Grid>
+      <hr className={classes.visibleSeparator} />
+      <Comments comments={comments} />
     </Grid>
   );
 
