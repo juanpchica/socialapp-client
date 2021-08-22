@@ -1,4 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
@@ -13,8 +17,12 @@ const styles = (theme) => ({
   },
 });
 
-const Comments = () => {
+const Comments = ({ comments, classes }) => {
   return <div>Comments</div>;
+};
+
+Comments.propTypes = {
+  comments: PropTypes.array.isRequired,
 };
 
 export default Comments;
