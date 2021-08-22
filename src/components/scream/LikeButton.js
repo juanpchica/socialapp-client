@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 //Redux
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../redux/actions/dataActions";
-import MyButton from "../util/MyButton";
+import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
+import MyButton from "../../util/MyButton";
 
 // Icons
 import FavoriteIcon from "@material-ui/icons/Favorite";

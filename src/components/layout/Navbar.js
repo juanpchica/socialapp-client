@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
-import AddIcon from "@material-ui/icons/Add";
 
 // React Router
 import { Link } from "react-router-dom";
@@ -16,8 +15,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 //My Components
-import MyButton from "../util/MyButton";
-import PostScream from "./PostScream";
+import MyButton from "../../util/MyButton";
+import PostScream from "../scream/PostScream";
 
 const Navbar = ({ authenticated }) => {
   return (

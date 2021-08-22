@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 //Redux
 import { connect } from "react-redux";
-import { uploadImage, logoutUser } from "../redux/actions/userActions";
+import { uploadImage, logoutUser } from "../../redux/actions/userActions";
 
 //Mui
 import Paper from "@material-ui/core/Paper";
@@ -24,7 +24,7 @@ import { Fragment } from "react";
 
 //Components
 import EditDetails from "./EditDetails";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.spreadThis,

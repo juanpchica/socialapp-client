@@ -14,11 +14,11 @@ import EditIcon from "@material-ui/icons/Edit";
 
 //Redux
 import { connect } from "react-redux";
-import { editUserDetails, getUserData } from "../redux/actions/userActions";
+import { editUserDetails, getUserData } from "../../redux/actions/userActions";
 import { Fragment } from "react";
 
 //Components
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.spreatThis,

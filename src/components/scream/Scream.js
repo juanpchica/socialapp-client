@@ -21,7 +21,7 @@ import ScreamDialog from "./ScreamDialog";
 
 //Icons
 import Comment from "@material-ui/icons/Comment";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = {
   card: {

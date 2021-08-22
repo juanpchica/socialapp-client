@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 //My Components
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import LikeButton from "./LikeButton";
 
 //Icons
@@ -22,7 +22,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 //Redux
 import { connect } from "react-redux";
-import { getScream } from "../redux/actions/dataActions";
+import { getScream } from "../../redux/actions/dataActions";
 import Comments from "./Comments";
 
 const styles = (theme) => ({

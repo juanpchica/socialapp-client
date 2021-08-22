@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 //Redux
 import { connect } from "react-redux";
-import { deleteScream } from "../redux/actions/dataActions";
+import { deleteScream } from "../../redux/actions/dataActions";
 //Mui
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";

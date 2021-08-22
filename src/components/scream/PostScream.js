@@ -16,10 +16,10 @@ import CloseIcon from "@material-ui/icons/Close";
 
 //Redux
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
 //My Components
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
