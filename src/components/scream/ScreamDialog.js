@@ -24,6 +24,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { connect } from "react-redux";
 import { getScream } from "../../redux/actions/dataActions";
 import Comments from "./Comments";
+import CommentsForm from "./CommentsForm";
 
 const styles = (theme) => ({
   ...theme.spreatThis,
@@ -113,6 +114,7 @@ const ScreamDialog = ({
       </Grid>
       <hr className={classes.visibleSeparator} />
       <Comments comments={comments} />
+      <CommentsForm screamId={screamId} />
     </Grid>
   );
 
