@@ -72,7 +72,7 @@ class CommentsForm extends Component {
   }
 }
 
-CommentForm.propTypes = {
+CommentsForm.propTypes = {
   submitComment: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -86,5 +86,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { submitComment })(
-  withStyles(styles)(CommentForm)
+  withStyles(styles)(CommentsForm)
 );
