@@ -13,7 +13,7 @@ const styles = (theme) => ({
   ...theme,
 });
 
-class CommentForm extends Component {
+class CommentsForm extends Component {
   state = {
     body: "",
     errors: {},
