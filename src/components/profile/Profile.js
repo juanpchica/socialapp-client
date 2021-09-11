@@ -27,6 +27,8 @@ import EditDetails from "./EditDetails";
 import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
+  
+  
   ...theme.spreadThis,
 });
 
