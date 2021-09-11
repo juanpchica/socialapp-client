@@ -57,14 +57,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         screams: [action.payload, ...state.screams],
       };
-    case SUBMIT_COMMENT:
-      return {
-        ...state,
-        scream: {
-          ...state.scream,
-          comments: [action.payload, ...state.scream.comments],
-        },
-      };
     default:
       return {
         ...state,
