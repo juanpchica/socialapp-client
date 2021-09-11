@@ -141,7 +141,7 @@ class Profile extends Component {
               component={Link}
               to='/login'
             >
-              Logins
+              Login
             </Button>
             <Button
               variant='contained'
