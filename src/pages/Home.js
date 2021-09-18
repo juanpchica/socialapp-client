@@ -8,9 +8,12 @@ import Profile from "../components/profile/Profile";
 import { connect } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
 
-const Home = ({ data: { loading: isLoading, screams }, getScreams }) => {
+const Home = ({
+  data: { loading: isLoading, screams },
+  getScreams: getScreamsHome,
+}) => {
   useEffect(() => {
-    getScreams();
+    getScreamsHome();
   }, []);
 
   let recentScreamsMarkup;
