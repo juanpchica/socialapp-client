@@ -112,6 +112,7 @@ const ScreamDialog = ({
         <span>{commentCount} comments</span>
       </Grid>
       <hr className={classes.visibleSeparator} />
+      <hr className={classes.visibleSeparator} />
       <Comments comments={comments} />
     </Grid>
   );
