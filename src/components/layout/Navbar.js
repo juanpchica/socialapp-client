@@ -40,7 +40,7 @@ const Navbar = ({ authenticated }) => {
               Login
             </Button>
             <Button color='inherit' component={Link} to='/signup'>
-              Signup
+              SignUp
             </Button>
           </Fragment>
         )}
